@@ -1,0 +1,25 @@
+group 'com.oldbox'
+version '1.0-SNAPSHOT'
+
+allprojects {
+    apply plugin: 'idea'
+}
+
+subprojects {
+    apply plugin: 'java'
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+    }
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+}
