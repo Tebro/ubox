@@ -35,7 +35,7 @@ public class AuthController {
 
         User user = userRepository.findByUsername(request.username);
 
-        if(user == null || passwordEncoder.matches(request.password, user.getPassword())){
+        if(user == null || !passwordEncoder.matches(request.password, user.getPassword())){
             return new LoginResponseDTO(ResponseCode.NOT_FOUND, "Invalid credentials");
         }
 

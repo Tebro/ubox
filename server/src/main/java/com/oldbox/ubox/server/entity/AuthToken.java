@@ -35,16 +35,14 @@ public class AuthToken {
     public static AuthToken newForUser(User user) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         AuthToken token = new AuthToken();
 
-        logger.info("User is : " + user);
+        logger.info("User is : " + user.getUsername());
 
 
         String from = "TOKEN" + user.getId() + System.currentTimeMillis();
-        //byte[] fromB = from.getBytes("UTF-8");
 
         MessageDigest md = MessageDigest.getInstance("MD5");
         token.token = (new HexBinaryAdapter()).marshal(md.digest(from.getBytes()));
 
-//        token.token = new String(md.digest(fromB));
         return token;
     }
 
