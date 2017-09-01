@@ -56,6 +56,8 @@ public class AuthController {
         return LoginResponseDTO.withToken(token.getToken());
     }
 
+
+    //TODO: Make this useful by making tokens expire.
     @RequestMapping("/api/renew")
     public LoginResponseDTO renew(@RequestParam String token){
         AuthToken old = tokenRepository.findAuthTokenByToken(token);

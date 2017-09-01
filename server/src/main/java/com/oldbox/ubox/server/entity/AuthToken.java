@@ -37,7 +37,6 @@ public class AuthToken {
 
         logger.info("User is : " + user.getUsername());
 
-
         String from = "TOKEN" + user.getId() + System.currentTimeMillis();
 
         MessageDigest md = MessageDigest.getInstance("MD5");
