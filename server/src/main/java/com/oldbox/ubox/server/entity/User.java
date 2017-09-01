@@ -1,6 +1,7 @@
 package com.oldbox.ubox.server.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -13,6 +14,10 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<AuthToken> tokens;
+
+    public User(){}
 
     public User(String username) {
         this.username = username;
@@ -32,5 +37,17 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Set<AuthToken> getTokens() {
+        return tokens;
+    }
+
+    public void addToken(AuthToken token) {
+        this.tokens.add(token);
+    }
+
+    public void deleteToken(AuthToken token) {
+        this.tokens.remove(token);
     }
 }

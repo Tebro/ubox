@@ -10,6 +10,11 @@ public class LoginResponseDTO {
         this.code = code;
     }
 
+    public LoginResponseDTO(ResponseCode code, String token) {
+        this.code = code;
+        this.token = token;
+    }
+
     public static LoginResponseDTO withToken(String token){
         LoginResponseDTO r = new LoginResponseDTO(ResponseCode.OK);
         r.token = token;

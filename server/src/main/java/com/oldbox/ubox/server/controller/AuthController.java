@@ -9,8 +9,12 @@ import com.oldbox.ubox.server.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.logging.Logger;
+
 @RestController
 public class AuthController {
+
+    private Logger logger = Logger.getLogger(AuthController.class.getName());
 
     private UserRepository userRepository;
 
@@ -27,6 +31,10 @@ public class AuthController {
 
         User user = userRepository.findByUsername(request.username);
 
+        if(user == null){
+            return new LoginResponseDTO(ResponseCode.NOT_FOUND, "User not found");
+        }
+
         //TODO: Passwords
         AuthToken token;
 
@@ -37,17 +45,22 @@ public class AuthController {
             return new LoginResponseDTO(ResponseCode.SERVER_ERROR);
         }
 
-        AuthToken savedToken = tokenRepository.save(token);
+        logger.info("User: " + user.getUsername() + " logged in.");
 
-        return LoginResponseDTO.withToken(savedToken.getToken());
+        token.setUser(user);
+        tokenRepository.save(token);
+        return LoginResponseDTO.withToken(token.getToken());
     }
 
     @RequestMapping("/api/renew")
     public LoginResponseDTO renew(@RequestParam String token){
         AuthToken old = tokenRepository.findAuthTokenByToken(token);
-
+        User user = userRepository.findByTokensContains(old);
+        logger.info("Renewing token for" + user.getUsername());
         try {
-            AuthToken newToken = tokenRepository.save(AuthToken.newForUser(old.getUser()));
+            AuthToken newToken = AuthToken.newForUser(user);
+            newToken.setUser(user);
+            tokenRepository.save(newToken);
             tokenRepository.delete(old);
             return LoginResponseDTO.withToken(newToken.getToken());
         } catch (Exception e) {

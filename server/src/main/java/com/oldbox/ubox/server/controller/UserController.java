@@ -1,7 +1,7 @@
 package com.oldbox.ubox.server.controller;
 
 
-import com.oldbox.ubox.server.entity.User;
+import com.oldbox.ubox.server.controller.dto.UserDTO;
 import com.oldbox.ubox.server.repository.TokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +18,10 @@ public class UserController {
         this.tokenRepository = tokenRepository;
     }
 
-
     @RequestMapping("/api/user")
-    public User getUser(@RequestParam String token){
-        return tokenRepository.findAuthTokenByToken(token).getUser();
+    public UserDTO getUser(@RequestParam String token){
+        return new UserDTO(tokenRepository.findAuthTokenByToken(token).getUser());
+
     }
 
 }
