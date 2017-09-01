@@ -17,9 +17,9 @@ public class AuthController {
 
     private Logger logger = Logger.getLogger(AuthController.class.getName());
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    private TokenRepository tokenRepository;
+    private final TokenRepository tokenRepository;
 
     private final BCryptPasswordEncoder passwordEncoder;
 
@@ -39,7 +39,6 @@ public class AuthController {
             return new LoginResponseDTO(ResponseCode.NOT_FOUND, "Invalid credentials");
         }
 
-        //TODO: Passwords
         AuthToken token;
 
         try {
