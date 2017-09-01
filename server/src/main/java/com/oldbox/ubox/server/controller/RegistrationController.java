@@ -5,6 +5,7 @@ import com.oldbox.ubox.server.controller.dto.RegistrationResponseDTO;
 import com.oldbox.ubox.server.entity.User;
 import com.oldbox.ubox.server.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,9 +19,12 @@ public class RegistrationController {
     private Logger logger = Logger.getLogger(RegistrationController.class.getName());
     private final UserRepository userRepository;
 
+    private final BCryptPasswordEncoder passwordEncoder;
+
     @Autowired
-    public RegistrationController(UserRepository userRepository) {
+    public RegistrationController(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @RequestMapping(path = "/api/register", method = RequestMethod.POST)
@@ -30,6 +34,7 @@ public class RegistrationController {
         }
 
         User user = new User(request.getUsername());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         if (userRepository.findByUsername(user.getUsername()) != null){
             return new RegistrationResponseDTO(ResponseCode.BAD_REQUEST, "Username in use");

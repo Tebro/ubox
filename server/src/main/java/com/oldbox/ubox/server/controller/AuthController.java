@@ -7,6 +7,7 @@ import com.oldbox.ubox.server.entity.User;
 import com.oldbox.ubox.server.repository.TokenRepository;
 import com.oldbox.ubox.server.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Logger;
@@ -20,10 +21,13 @@ public class AuthController {
 
     private TokenRepository tokenRepository;
 
+    private final BCryptPasswordEncoder passwordEncoder;
+
     @Autowired
-    public AuthController(UserRepository userRepository, TokenRepository tokenRepository) {
+    public AuthController(UserRepository userRepository, TokenRepository tokenRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.tokenRepository = tokenRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @RequestMapping(value = "/api/login", method = RequestMethod.POST)
@@ -31,8 +35,8 @@ public class AuthController {
 
         User user = userRepository.findByUsername(request.username);
 
-        if(user == null){
-            return new LoginResponseDTO(ResponseCode.NOT_FOUND, "User not found");
+        if(user == null || passwordEncoder.matches(request.password, user.getPassword())){
+            return new LoginResponseDTO(ResponseCode.NOT_FOUND, "Invalid credentials");
         }
 
         //TODO: Passwords

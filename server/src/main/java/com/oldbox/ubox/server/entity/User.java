@@ -14,6 +14,9 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
+    @Column(nullable = false)
+    private String password;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<AuthToken> tokens;
 
@@ -49,5 +52,13 @@ public class User {
 
     public void deleteToken(AuthToken token) {
         this.tokens.remove(token);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
