@@ -7,13 +7,7 @@ import com.oldbox.ubox.server.entity.User;
 import com.oldbox.ubox.server.repository.TokenRepository;
 import com.oldbox.ubox.server.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AuthController {
@@ -28,13 +22,8 @@ public class AuthController {
         this.tokenRepository = tokenRepository;
     }
 
-    @RequestMapping("/api/login")
-    public LoginResponseDTO login(@RequestBody LoginRequestDTO request, HttpServletResponse response, @CookieValue("token") String cookieToken) {
-
-        if(tokenRepository.findAuthTokenByToken(cookieToken).getUser().getUsername().equalsIgnoreCase(request.username)){
-            response.addCookie(new Cookie("token", cookieToken));
-            return LoginResponseDTO.withToken(cookieToken);
-        }
+    @RequestMapping(value = "/api/login", method = RequestMethod.POST)
+    public LoginResponseDTO login(@RequestBody LoginRequestDTO request) {
 
         User user = userRepository.findByUsername(request.username);
 
@@ -50,9 +39,21 @@ public class AuthController {
 
         AuthToken savedToken = tokenRepository.save(token);
 
-        response.addCookie(new Cookie("token", savedToken.getToken()));
-
         return LoginResponseDTO.withToken(savedToken.getToken());
+    }
+
+    @RequestMapping("/api/renew")
+    public LoginResponseDTO renew(@RequestParam String token){
+        AuthToken old = tokenRepository.findAuthTokenByToken(token);
+
+        try {
+            AuthToken newToken = tokenRepository.save(AuthToken.newForUser(old.getUser()));
+            tokenRepository.delete(old);
+            return LoginResponseDTO.withToken(newToken.getToken());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new LoginResponseDTO(ResponseCode.SERVER_ERROR);
+        }
     }
 
 }
