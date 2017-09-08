@@ -1,0 +1,56 @@
+@startuml
+
+interface unModifiedCrudRepository
+note left of unModifiedCrudRepository: This means that no extra\nmethods added to class specific repository
+
+class User {
+    - long id
+    - String username
+    - String password
+    - AuthToken[] tokens
+    - ProfileFieldValue[] profileFieldValues
+}
+
+interface UserRepository {
+    + findByUsername(String)
+}
+
+UserRepository --> User: Stores
+
+class AuthToken {
+    - long id
+    - User user
+    - String token
+}
+
+interface TokenRepository {
+    + findByTokenValue(String)
+}
+
+TokenRepository --> AuthToken: Stores
+
+User --> AuthToken: Contains
+
+class ProfileField {
+    - long id
+    - String FieldName
+    - ProfileFieldValue[] profileFieldValues
+}
+
+unModifiedCrudRepository --> ProfileField: Stores
+
+class ProfileFieldValue {
+    - long id
+    - ProfileField profileFieldId
+    - User userId
+    - String value
+}
+
+unModifiedCrudRepository --> ProfileFieldValue: Stores
+
+ProfileFieldValue --> User
+ProfileFieldValue --> ProfileField
+
+
+
+@enduml
