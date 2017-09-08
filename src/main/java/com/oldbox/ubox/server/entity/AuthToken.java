@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 @Table(name = "auth_tokens")
 public class AuthToken {
 
-    static Logger logger = Logger.getLogger(AuthToken.class.getName());
+    private static Logger logger = Logger.getLogger(AuthToken.class.getName());
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
