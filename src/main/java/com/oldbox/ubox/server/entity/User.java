@@ -20,6 +20,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<AuthToken> tokens;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<ProfileFieldValue> profileFieldValues;
+
     public User(){}
 
     public User(String username) {
@@ -60,5 +63,17 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<ProfileFieldValue> getProfileFieldValues() {
+        return profileFieldValues;
+    }
+
+    public void setTokens(Set<AuthToken> tokens) {
+        this.tokens = tokens;
+    }
+
+    public void setProfileFieldValues(Set<ProfileFieldValue> profileFieldValues) {
+        this.profileFieldValues = profileFieldValues;
     }
 }
