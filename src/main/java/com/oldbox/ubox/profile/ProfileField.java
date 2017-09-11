@@ -1,4 +1,4 @@
-package com.oldbox.ubox.entity;
+package com.oldbox.ubox.profile;
 
 
 import javax.persistence.*;

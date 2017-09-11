@@ -1,4 +1,4 @@
-package com.oldbox.ubox.controller.dto;
+package com.oldbox.ubox.user;
 
 public class RegistrationRequestDTO {
 

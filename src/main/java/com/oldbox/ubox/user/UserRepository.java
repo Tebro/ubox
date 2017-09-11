@@ -1,7 +1,6 @@
-package com.oldbox.ubox.repository;
+package com.oldbox.ubox.user;
 
-import com.oldbox.ubox.entity.AuthToken;
-import com.oldbox.ubox.entity.User;
+import com.oldbox.ubox.auth.AuthToken;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Long> {

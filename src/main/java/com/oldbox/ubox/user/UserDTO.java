@@ -1,7 +1,7 @@
-package com.oldbox.ubox.controller.dto;
+package com.oldbox.ubox.user;
 
-import com.oldbox.ubox.entity.ProfileFieldValue;
-import com.oldbox.ubox.entity.User;
+import com.oldbox.ubox.profile.ProfileFieldDTO;
+import com.oldbox.ubox.profile.ProfileFieldValue;
 
 import java.util.ArrayList;
 import java.util.List;

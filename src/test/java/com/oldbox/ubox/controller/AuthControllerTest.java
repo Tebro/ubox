@@ -1,10 +1,11 @@
 package com.oldbox.ubox.controller;
 
 import com.google.gson.Gson;
-import com.oldbox.ubox.repository.TokenRepository;
-import com.oldbox.ubox.repository.UserRepository;
-import com.oldbox.ubox.controller.dto.LoginRequestDTO;
-import com.oldbox.ubox.entity.User;
+import com.oldbox.ubox.auth.AuthController;
+import com.oldbox.ubox.auth.TokenRepository;
+import com.oldbox.ubox.user.UserRepository;
+import com.oldbox.ubox.auth.LoginRequestDTO;
+import com.oldbox.ubox.user.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

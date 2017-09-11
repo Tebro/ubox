@@ -1,4 +1,4 @@
-package com.oldbox.ubox.controller.dto;
+package com.oldbox.ubox.auth;
 
 public class LoginRequestDTO {
     public String username;

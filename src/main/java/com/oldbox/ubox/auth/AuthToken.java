@@ -1,5 +1,7 @@
-package com.oldbox.ubox.entity;
+package com.oldbox.ubox.auth;
 
+
+import com.oldbox.ubox.user.User;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;

@@ -1,6 +1,5 @@
-package com.oldbox.ubox.repository;
+package com.oldbox.ubox.profile;
 
-import com.oldbox.ubox.entity.ProfileField;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ProfileFieldRepository extends CrudRepository<ProfileField, Long>{

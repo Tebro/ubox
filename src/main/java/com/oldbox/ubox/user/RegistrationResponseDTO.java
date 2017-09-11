@@ -1,6 +1,6 @@
-package com.oldbox.ubox.controller.dto;
+package com.oldbox.ubox.user;
 
-import com.oldbox.ubox.controller.ResponseCode;
+import com.oldbox.ubox.ResponseCode;
 
 public class RegistrationResponseDTO {
 

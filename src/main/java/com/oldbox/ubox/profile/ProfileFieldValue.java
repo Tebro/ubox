@@ -1,5 +1,7 @@
-package com.oldbox.ubox.entity;
+package com.oldbox.ubox.profile;
 
+
+import com.oldbox.ubox.user.User;
 
 import javax.persistence.*;
 

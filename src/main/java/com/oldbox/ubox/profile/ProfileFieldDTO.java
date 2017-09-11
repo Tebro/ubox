@@ -1,6 +1,6 @@
-package com.oldbox.ubox.controller.dto;
+package com.oldbox.ubox.profile;
 
-import com.oldbox.ubox.entity.ProfileFieldValue;
+import com.oldbox.ubox.profile.ProfileFieldValue;
 
 public class ProfileFieldDTO {
     public String name;

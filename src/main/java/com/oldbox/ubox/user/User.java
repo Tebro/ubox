@@ -1,4 +1,7 @@
-package com.oldbox.ubox.entity;
+package com.oldbox.ubox.user;
+
+import com.oldbox.ubox.auth.AuthToken;
+import com.oldbox.ubox.profile.ProfileFieldValue;
 
 import javax.persistence.*;
 import java.util.Set;
