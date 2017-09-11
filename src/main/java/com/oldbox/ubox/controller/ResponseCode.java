@@ -1,4 +1,4 @@
-package com.oldbox.ubox.server.controller;
+package com.oldbox.ubox.controller;
 
 public enum ResponseCode {
     OK(),

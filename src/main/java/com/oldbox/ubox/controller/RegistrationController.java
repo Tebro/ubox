@@ -1,11 +1,10 @@
-package com.oldbox.ubox.server.controller;
+package com.oldbox.ubox.controller;
 
-import com.oldbox.ubox.server.controller.dto.RegistrationRequestDTO;
-import com.oldbox.ubox.server.controller.dto.RegistrationResponseDTO;
-import com.oldbox.ubox.server.entity.User;
-import com.oldbox.ubox.server.repository.UserRepository;
+import com.oldbox.ubox.controller.dto.RegistrationRequestDTO;
+import com.oldbox.ubox.controller.dto.RegistrationResponseDTO;
+import com.oldbox.ubox.repository.UserRepository;
+import com.oldbox.ubox.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

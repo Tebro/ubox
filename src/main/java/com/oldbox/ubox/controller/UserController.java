@@ -1,8 +1,8 @@
-package com.oldbox.ubox.server.controller;
+package com.oldbox.ubox.controller;
 
 
-import com.oldbox.ubox.server.controller.dto.UserDTO;
-import com.oldbox.ubox.server.repository.TokenRepository;
+import com.oldbox.ubox.controller.dto.UserDTO;
+import com.oldbox.ubox.repository.TokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

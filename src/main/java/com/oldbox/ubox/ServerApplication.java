@@ -1,4 +1,4 @@
-package com.oldbox.ubox.server;
+package com.oldbox.ubox;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

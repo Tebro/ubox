@@ -1,4 +1,4 @@
-package com.oldbox.ubox.server.entity;
+package com.oldbox.ubox.entity;
 
 import javax.persistence.*;
 import java.util.Set;

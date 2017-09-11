@@ -1,10 +1,10 @@
-package com.oldbox.ubox.server.controller;
+package com.oldbox.ubox.controller;
 
-import com.oldbox.ubox.server.entity.AuthToken;
-import com.oldbox.ubox.server.entity.ProfileField;
-import com.oldbox.ubox.server.entity.ProfileFieldValue;
-import com.oldbox.ubox.server.entity.User;
-import com.oldbox.ubox.server.repository.TokenRepository;
+import com.oldbox.ubox.entity.AuthToken;
+import com.oldbox.ubox.entity.ProfileField;
+import com.oldbox.ubox.entity.ProfileFieldValue;
+import com.oldbox.ubox.entity.User;
+import com.oldbox.ubox.repository.TokenRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

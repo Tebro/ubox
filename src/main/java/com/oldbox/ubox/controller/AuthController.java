@@ -1,13 +1,12 @@
-package com.oldbox.ubox.server.controller;
+package com.oldbox.ubox.controller;
 
-import com.oldbox.ubox.server.controller.dto.LoginRequestDTO;
-import com.oldbox.ubox.server.controller.dto.LoginResponseDTO;
-import com.oldbox.ubox.server.entity.AuthToken;
-import com.oldbox.ubox.server.entity.User;
-import com.oldbox.ubox.server.repository.TokenRepository;
-import com.oldbox.ubox.server.repository.UserRepository;
+import com.oldbox.ubox.repository.UserRepository;
+import com.oldbox.ubox.controller.dto.LoginRequestDTO;
+import com.oldbox.ubox.controller.dto.LoginResponseDTO;
+import com.oldbox.ubox.entity.AuthToken;
+import com.oldbox.ubox.entity.User;
+import com.oldbox.ubox.repository.TokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 

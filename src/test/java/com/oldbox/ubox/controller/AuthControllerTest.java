@@ -1,11 +1,10 @@
-package com.oldbox.ubox.server.controller;
+package com.oldbox.ubox.controller;
 
 import com.google.gson.Gson;
-import com.oldbox.ubox.server.controller.dto.LoginRequestDTO;
-import com.oldbox.ubox.server.entity.AuthToken;
-import com.oldbox.ubox.server.entity.User;
-import com.oldbox.ubox.server.repository.TokenRepository;
-import com.oldbox.ubox.server.repository.UserRepository;
+import com.oldbox.ubox.repository.TokenRepository;
+import com.oldbox.ubox.repository.UserRepository;
+import com.oldbox.ubox.controller.dto.LoginRequestDTO;
+import com.oldbox.ubox.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;

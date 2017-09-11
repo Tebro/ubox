@@ -1,9 +1,9 @@
-package com.oldbox.ubox.server.controller;
+package com.oldbox.ubox.controller;
 
 import com.google.gson.Gson;
-import com.oldbox.ubox.server.controller.dto.RegistrationRequestDTO;
-import com.oldbox.ubox.server.entity.User;
-import com.oldbox.ubox.server.repository.UserRepository;
+import com.oldbox.ubox.controller.dto.RegistrationRequestDTO;
+import com.oldbox.ubox.repository.UserRepository;
+import com.oldbox.ubox.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatcher;

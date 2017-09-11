@@ -1,6 +1,6 @@
-package com.oldbox.ubox.server.controller.dto;
+package com.oldbox.ubox.controller.dto;
 
-import com.oldbox.ubox.server.controller.ResponseCode;
+import com.oldbox.ubox.controller.ResponseCode;
 
 public class LoginResponseDTO {
     public ResponseCode code;
